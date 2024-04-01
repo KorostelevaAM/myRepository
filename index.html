@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=.7">
+    <title>Биоритмы</title>
+    <script type="text/javascript">
+        function Clear_() {
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function Bioritm()
+        {
+            Clear_();
+            var g = parseInt(G_R.value);
+            var m = parseInt(M_R.value);
+            var c = parseInt(D_R.value);
+                if ( ( (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && c<=31 && c>0 ) || ( (m == 4 || m == 6 || m == 9 || m == 11) && c<=30 && c>0) ||
+              (m == 2 && (g % 4) != 0 && c>0 && c<=28) ||
+              (m == 2 && (g % 4) == 0 && c>0 && c<=29) ) 
+              {
+                    var gg = parseInt(G_P.value);                   
+                    var mm = parseInt(Mes.value);
+         if (mm>0 && mm<=12 && gg>=0 && gg <=3000)
+         {
+               var dtr = new Date(g, m - 1, c);
+               var dtp = new Date(gg, mm - 1, 1);
+               var pden=Math.floor((dtp.getTime()-dtr.getTime())/(1000* 60*60*24));
+               var ww = 503;
+               var hh = 275;
+               var canvas = document.getElementById('canvas');
+               var ctx = canvas.getContext('2d');
+               ctx.beginPath(); ctx.lineWidth = 1; ctx.strokeStyle = '#000'; ctx.moveTo(0, 100); ctx.lineTo(ww, 100); ctx.stroke();
+               var yh = 100;
+               var mas = 2.39;
+               var kf = (1.0 / 23.0) / mas;
+               var ke = (1.0 / 28.0) / mas;
+               var ki = (1.0 / 33.0) / mas;
+               var yn;
+               var yk;
+               var www = 0;
+               if (mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12) www = 15 * 31 + 2;
+               if (mm == 4 || mm == 6 || mm == 9 || mm == 11) www = 15 * 30 + 2;
+               if (mm == 2 && (gg % 4) != 0) www = 15 * 28 + 2;
+               if (mm == 2 && (gg % 4) == 0) www = 15 * 29 + 2;
+             
+               ctx.font = "bold 12px times-newroman";
+               ctx.fillStyle = '#000';
+               ctx.fillText("Дата рождения " + c.toString() + "." + m.toString() + "." + g.toString() + "             На 01." + mm.toString() + "." + gg.toString() + " число прожитых дней  " + pden.toString() , 27, 20);
+               ctx.fillStyle = '#000';
+               ctx.fillText(" Биоритмы построены на 01." + mm.toString() + "." + gg.toString(), 150, 210);
+               ctx.fillStyle = '#009900';
+               ctx.fillText("Физический биоритм", 15, 192);
+
+               ctx.fillStyle = '#ff0000';
+               ctx.fillText("Эмоциональный биоритм", 150, 192);
+
+               ctx.fillStyle = '#0000ff';
+               ctx.fillText("Интеллектуальный биоритм", 310, 192);
+         
+               var x;
+          
+               pden = pden - 1;
+
+
+               for (x = 15; x <= www + 13; x = x + 2)
+               {        
+                  yn = ((yh - 27) * Math.sin((-15 * (23.0 / 2.0) - x + 15 - (pden % 23) * 15) * kf));
+                  yk = ((yh - 27) * Math.sin((-15 * (23.0 / 2.0) - x + 15 - (pden % 23) * 15 - 2) * kf));
+                  ctx.beginPath();
+                  ctx.lineWidth = 2;
+                  ctx.moveTo(x, yh - yn);
+                  ctx.lineTo(x +2, yh - yk);
+                  ctx.strokeStyle = "#009900";
+                  ctx.stroke();
+               }
+        
+               for (x = 15; x <= www + 13; x = x + 2)
+               {
+              yn = ((yh - 27) * Math.sin((-15 * (28.0 / 2.0) - x + 15 - (pden % 28) * 15) * ke));
+              yk = ((yh - 27) * Math.sin((-15 * (28.0 / 2.0) - x + 15 - (pden % 28) * 15 - 2) * ke));
+              ctx.beginPath();
+              ctx.moveTo(x, yh - yn);
+              ctx.lineTo(x + 2, yh - yk);
+              ctx.strokeStyle = "#ff0000";
+              ctx.stroke();
+          
+               }
+
+           for (x = 15; x <= www + 13; x = x + 2)
+           {
+               yn = ((yh - 27) * Math.sin((-15 * (33.0 / 2.0) - x + 15 - (pden % 33) * 15) * ki));
+               yk = ((yh - 27) * Math.sin((-15 * (33.0 / 2.0) - x + 15 - (pden % 33) * 15 - 2) * ki));
+               ctx.moveTo(x, yh - yn);
+               ctx.lineTo(x + 2, yh - yk);
+               ctx.strokeStyle = "#0000ff";
+               ctx.stroke();
+         
+           }
+                  ctx.strokeStyle = '#000';
+           for (x = 30; x < www + 15; x = x + 15)
+           {
+            ctx.beginPath();       ctx.moveTo(x, 95); ctx.lineTo(x, 105); ctx.stroke();
+            ctx.fillStyle = '#000';
+            ctx.fillText((x / 15 - 1).toString(), x, 85);
+           }
+           }
+           else
+           {
+           alert("Ошибка ввода месяца или года построения биоритмов!!!");          
+           }
+           }
+           else
+           {
+           alert("Такой даты рождения не существует!!!");
+           }
+        }
+
+
+        function F_G_b() {
+            var g = parseInt(G_P.value);
+            g = g + 1;
+            G_P.value = g;
+            Bioritm();
+        }
+
+        function F_G_m() {
+            var g = parseInt(G_P.value);
+            g = g - 1;
+            G_P.value = g;
+            Bioritm();
+        }
+
+
+        function F_M_b() {
+            var m = parseInt(Mes.value);
+            m = m + 1;
+            if (m > 12) {
+                m = 1;
+                var g = parseInt(G_P.value);
+                g = g + 1;
+                G_P.value = g;
+            }
+            Mes.value = m;
+            Bioritm();
+        }
+
+
+        function F_M_m() {
+            var m = parseInt(Mes.value);
+            m = m - 1;
+            if (m <1) {
+                m = 12;
+                var g = parseInt(G_P.value);
+                g = g - 1;
+                G_P.value = g;
+            }
+
+            Mes.value = m;
+            Bioritm();
+        }
+
+        function Set_Date() {
+            var mdate = new Date();
+            G_P.value = mdate.getFullYear();
+            Mes.value = mdate.getMonth()+1;
+        }
+    </script>
+    <style >
+        .f
+        {
+            font-size: 22px;
+        }
+        .h
+        {
+            height: 30px;
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body onload="Set_Date(), Bioritm()" style="background-color:silver; ">   
+    <div style="width:500px;
+     margin-left:auto;margin-right:auto; 
+     text-align: center; 
+     background-color: #222;   
+     ">	
+        
+  <canvas id="canvas" width="500" height="225" style="background-color:#fff;"></canvas> 
+    
+<div style="text-align: left; padding: 20px; background-color: white;"  >
+    <div style="text-align: center; background-color: #444; padding: 10px; color: white" >
+    <p>
+    <p>День рождения:</p>
+             год   <input type="text" onclick="Clear_()" id="G_R" value="1957" style="width:55px;" class="f">
+             месяц <input type="text" onclick="Clear_()" id="M_R" value="9" style="width:30px;" class="f">
+             число <input type="text" onclick="Clear_()" id="D_R" value="30" style="width:30px;" class="f">
+    
+    </p>
+    <input id="Button1" onclick="Bioritm()" type="button" value="Построить биоритмы на" style="height: 36px;" />  
+    <p>
+          
+        год:        
+           <input id="G_m" onclick="F_G_m()" type="button" value="&lt;" class="h"/>&nbsp;&nbsp;  
+            <input type="text" onclick="Clear_()" id="G_P" value="2016" style="width:55px;" class="f"> &nbsp;&nbsp; 
+           <input id="G_b" onclick="F_G_b()" type="button" value="&gt;" class="h"/> 
+             месяц:
+           <input id="M_m" onclick="F_M_m()" type="button" value="&lt;" class="h"/>  &nbsp;&nbsp;      
+           <input id="Mes" type="text" onclick="Clear_()" value="1" style="width:30px;" class="f"/>  &nbsp;&nbsp;       
+           <input id="M_b" onclick="F_M_b()" type="button" value="&gt;" class="h"/>
+    </p>
+    </div>
+
+    <div>
+
+<div style="font-size: 16px;">
+<p>
+    Жизнь человека, как и все в природе, подвержено влиянию циклических изменений. 
+    Успешность того или иного вида деятельности в каждый момент времени определяется 
+    балансом притока и оттока его внутренней энергии. Такой баланс изменяется в соответствии  
+    с циклами биоритмов человека. 
+</p>
+<h4 style="color:green">Физический биоритм</h4>
+Характеризует объем внутренней энергии организма, а также такие показатели,
+как выносливость, активность, скорость реакции и другие. 
+Также физический биоритм определяет способность к восстановлению организма, 
+предприимчивость и амбициозность.  От него зависят показатели эффективности метаболизма.
+Оценка физического состояния человека обязательно должна включать исследование 
+этого биоритмического цикла. Особенно это важно для спортсменов, для которых 
+большие физические нагрузки становятся неотъемлемой частью ежедневной работы. 
+Определение благоприятных и неблагоприятных периодов даст возможность
+варьировать степень интенсивности тренировок. 
+Таким образом человек может избежать травм и максимально 
+эффективно использовать свои внутренние ресурсы.     
+<h4 style="color: red"> Эмоциональный (душевный) биоритм </h4>  
+Этот биоритм определяет Ваше внутренне эмоциональное состояние. От течения его цикла напрямую 
+зависит чувствительность человека, его восприятие, а также весь спектр чувств и эмоций, 
+сопровождающих повседневную жизнь. Также душевный биоритм отвечает за творческие способности 
+и интуитивное знание. Особенно важно учитывать эмоциональный цикл для женщин и всех людей, 
+занятых в творческой деятельности или тех, чья работа связана с общением. 
+Очень явно воздействие душевного биоритма на семейные и любовные отношения. 
+Так как его цикл определяет склонность к сопереживанию, уязвимость и обидчивость, 
+эти факторы могут оказать существенное влияние на общение двух близких людей.   
+<h4 style="color: blue">Интеллектуальный биоритм </h4>
+Этот биоритмический цикл характеризует умственные способности человека.
+От положения синусоиды интеллектуального биоритма зависит способность размышлять,
+делать логические выводы, сопоставлять факты, находить взаимосвязи. Кроме того, 
+данный биоритм отвечает за предусмотрительность и осторожность, определяя
+рациональность действий человека. Особенно явно ощущают изменения цикла
+люди интеллектуальных профессий – учителя, писатели, журналисты, финансисты и т.д.
+Есть версия, согласно которой есть взаимосвязь между интеллектуальным биоритмом 
+и секрецией щитовидной железы. Также есть данные, подтверждающие
+зависимость производительности труда от изменений цикла этого биоритма.
+<a href="http://geocult.ru/bioritmyi-online-raschet">Источник:</a>    
+</div> 
+</div>   
+</div>        
+</div>
+</body>
+</html>
+
