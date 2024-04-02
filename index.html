@@ -1,207 +1,446 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zavetla</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="myscript.js"></script>
+-->
+    <title>Крестики Нолики</title>
+    <script>
+
+    </script>
 </head>
-<body style="background-color: #000;"> 
-
-
-        <img src="F\f1.png" class="MyImg" id="IFon"> 
-        <img src="L\l1.png" class="MyImg" id="IL"> 
-        <img src="R\r1.png" class="MyImg" id="IR"> 
-        <img src="N\n1.png" class="MyImg" id="IN"> 
-        <img src="G\g1.png" class="MyImg" id="IG"> 
-        <img src="K\k1.png" class="MyImg" id="IK"> 
-        <img src="B\b1.png" class="MyImg" id="IB"> 
-        <img src="O\o1.png" class="MyImg" id="IO"> 
-        <img src="V\v1.png" class="MyImg" id="IV"> 
-        <img src="A\a1.png" class="MyImg" id="IA">  
-
-
-
-    <div style=" position: fixed; z-index: 2; bottom: 20px; width: 280px; margin-left: 40px; " >
-
-        <img src="ICO\left.png" onclick="FL()" style="cursor: pointer;">
-        <img src="ICO\fon.png">
-        <img src="ICO\right.png" onclick="FR()" style="cursor: pointer;">
-
-        <img src="ICO\left.png" onclick="LL()" style="cursor: pointer;">
-        <img src="ICO\lico.png">
-        <img src="ICO\right.png" onclick="LR()" style="cursor: pointer;">
-  
-        <img src="ICO\left.png" onclick="RL()" style="cursor: pointer;">
-        <img src="ICO\rot.png">
-        <img src="ICO\right.png" onclick="RR()" style="cursor: pointer;">
-
-        <img src="ICO\left.png" onclick="NL()" style="cursor: pointer;">
-        <img src="ICO\nos.png">
-        <img src="ICO\right.png" onclick="NR()" style="cursor: pointer;">
-
-        <img src="ICO\left.png" onclick="GL()" style="cursor: pointer;">
-        <img src="ICO\glaz.png">
-        <img src="ICO\right.png" onclick="GR()" style="cursor: pointer;">
-
-        <img src="ICO\left.png" onclick="KL()" style="cursor: pointer;">
-        <img src="ICO\rodink.png">
-        <img src="ICO\right.png" onclick="KR()" style="cursor: pointer;">
-
-        <img src="ICO\left.png" onclick="BL()" style="cursor: pointer;">
-        <img src="ICO\brovi1.png">
-        <img src="ICO\right.png" onclick="BR()" style="cursor: pointer;">
-
-        <img src="ICO\left.png" onclick="OL()" style="cursor: pointer;">
-        <img src="ICO\odejda.png">
-        <img src="ICO\right.png" onclick="OR()" style="cursor: pointer;">
-
-        <img src="ICO\left.png" onclick="VL()" style="cursor: pointer;">
-        <img src="ICO\volos.png">
-        <img src="ICO\right.png" onclick="VR()" style="cursor: pointer;">
-
-        <img src="ICO\left.png" onclick="AL()" style="cursor: pointer;">
-        <img src="ICO\ochki.png">
-        <img src="ICO\right.png" onclick="AR()" style="cursor: pointer;">
-
-    </div>
-
-    <div style=" position: fixed; z-index: 3; top: 0; margin: 1%;">
-        <a href="slider.html"><img src="ICO\right.png" style="cursor: pointer;"></a>
-    </div>
-
-
-
-
+<body>
+  Крестики - Нолики
+    <table class="t">
+                <tr>
+                        <td>
+                                <input type="button" id="b00" class="But" onclick="OB00()">
+                        </td>
+                        <td>
+                                <input type="button" id="b01" class="But" onclick="OB01()">
+                        </td>
+                        <td>
+                                <input type="button" id="b02" class="But" onclick="OB02()">
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                                <input type="button" id="b10" class="But" onclick="OB10()">
+                        </td>
+                        <td>
+                                <input type="button" id="b11" class="But" onclick="OB11()">
+                        </td>
+                        <td>
+                                <input type="button" id="b12" class="But" onclick="OB12()">
+                        </td>                      
+                </tr>
+                <tr>
+                        <td>
+                                <input type="button" id="b20" class="But" onclick="OB20()">
+                        </td>
+                        <td>
+                                <input type="button" id="b21" class="But" onclick="OB21()">
+                        </td>
+                        <td>
+                                <input type="button" id="b22" class="But" onclick="OB22()">
+                        </td>  
+                </tr>
+                <tr>
+                        <td colspan="3" style="text-align: center">
+                                <input type="button" value="Новая игра" onclick="Reset()" id="ResBut" class="BtnNew">
+                        </td>                       
+                </tr>
+    </table>
 </body>
 </html>
 
-<script>
-        var kf = 12;
-        var kl = 4;
-        var kr = 7;
-        var kn = 5;
-        var kg = 8;
-        var kk = 8;
-        var kb = 8;
-        var ko = 9;
-        var kv = 15;
-        var ka = 8;
-
-        var cf = 1;
-        var cl = 1;
-        var cr = 1;
-        var cn = 1;
-        var cg = 1;
-        var ck = 1;
-        var cb = 1;
-        var co = 1;
-        var cv = 1;
-        var ca = 1;
-
-function FR()
-{
-    cf++;if (cf > kf) cf = 1;IFon.src='F/f'+cf+'.png';
-}
-function FL()
-{
-    cf--;if (cf < 1) cf = kf;IFon.src='F/f'+cf+'.png'; 
-}
-
-function LR()
-{
-    cl++;if (cl > kl) cl = 1;IL.src='L/l'+cl+'.png';
-}
-function LL()
-{
-    cl--;if (cl < 1) cl = kl;IL.src='L/l'+cl+'.png';
-}
-
-function RR()
-{
-    cr++;if (cr > kr) cr = 1;IR.src='R/r'+cr+'.png';
-}
-function RL()
-{
-    cr--;if (cr < 1) cr = kr;IR.src='R/r'+cr+'.png';
-}
-
-function NR()
-{
-    cn++;if (cn > kn) cn = 1;IN.src='N/n'+cn+'.png';
-}
-function NL()
-{
-    cn--;if (cn < 1) cn = kn;IN.src='N/n'+cn+'.png';
-}
-
-function GR()
-{
-    cg++;if (cg > kg) cg = 1;IG.src='G/g'+cg+'.png';
-}
-function GL()
-{
-    cg--;if (cg < 1) cg = kg;IG.src='G/g'+cg+'.png';
-}
-
-function KR()
-{
-    ck++;if (ck > kk) ck = 1;IK.src='K/k'+ck+'.png';
-}
-function KL()
-{
-    ck--;if (ck < 1) ck = kk;IK.src='K/k'+ck+'.png';
-}
-
-function BR()
-{
-    cb++;if (cb > kb) cb = 1;IB.src='B/b'+cb+'.png';
-}
-function BL()
-{
-    cb--;if (cb < 1) cb = kb;IB.src='B/b'+cb+'.png';
-}
-
-function OR()
-{
-    co++;if (co > ko) co = 1;IO.src='O/o'+co+'.png';
-}
-function OL()
-{
-    co--;if (co < 1) co = ko;IO.src='O/o'+co+'.png';
-}
-
-function VR()
-{
-    cv++;if (cv > kv) cv = 1;IV.src='V/v'+cv+'.png';
-}
-function VL()
-{
-    cv--;if (cv < 1) cv = kv;IV.src='V/v'+cv+'.png';
-}
-
-function AR()
-{
-    ca++;if (ca > ka) ca = 1;IA.src='A/a'+ca+'.png';
-}
-function AL()
-{
-    ca--;if (ca < 1) ca = ka;IA.src='A/a'+ca+'.png';
-}
-
-</script>
 
 <style>
-.MyImg
+
+
+.BtnNew
 {
-    z-index: 0;
-    position: fixed;
+    font-size: 55px;
+    background-color: #222;
+    color: #67875d;
+    text-shadow: 0 2px 1px #79a06d, 
+    -1px 3px 1px #82ad75, 
+    -2px 5px 1px #8ebf80;
+            
+}
 
-    margin-left: 0%;
+.But
+{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: white;
+    font-size: 55px;
 
-  max-height: 80%;
-  max-width: 80%;
-  display: block;
 
 }
+
+.Butx
+{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    font-size: 55px;
+    color: #87675d;
+    text-shadow: 0 2px 1px #a0796d, 
+    -1px 3px 1px #ad8275, 
+    -2px 5px 1px #bf8e80;
+}
+
+.Buto
+{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    font-size: 55px;
+    color: #67875d;
+    text-shadow: 0 2px 1px #79a06d, 
+    -1px 3px 1px #82ad75, 
+    -2px 5px 1px #8ebf80;
+}
+
+
+
+
+body
+{
+    background-color:#333333;
+    text-align: center;
+    font-size: 34px;
+    color: #67875d;
+    text-shadow: 0 2px 1px #79a06d, 
+    -1px 3px 1px #82ad75, 
+    -2px 5px 1px #8ebf80;     
+}
+
+.t
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 </style>
+
+<script>
+     let b=true
+
+function OB00()
+{
+    if(b)
+    {  
+    b00.classList.add("Butx")
+    b00.value="X"       
+    }
+    else
+    {
+    b00.classList.add("Buto")
+    b00.value="0"       
+    }
+ 
+    b00.disabled="false"
+    b=!b
+    Proverka()
+}
+
+function OB01()
+{
+    if(b)
+    {
+    b01.classList.add("Butx")
+    b01.value="X"           
+    }
+    else
+    {
+    b01.classList.add("Buto")
+    b01.value="0"            
+    }
+    b01.disabled="false"
+    b=!b
+    Proverka()
+}
+
+function OB02()
+{
+    if(b)
+    {
+    b02.classList.add("Butx")
+    b02.value="X"        
+    }
+
+    else
+    {
+    b02.classList.add("Buto")
+    b02.value="0"       
+    }
+    b02.disabled="false"
+    b=!b
+    Proverka()
+}
+
+
+function OB10()
+{
+    if(b)
+    {
+    b10.classList.add("Butx")
+    b10.value="X"
+    }
+    else
+    {
+    b10.classList.add("Buto")
+    b10.value="0"
+    }
+    b10.disabled="false"
+    b=!b
+    Proverka()
+}
+
+function OB11()
+{
+    if(b)
+    {
+    b11.classList.add("Butx")
+    b11.value="X"
+    }
+    else
+    {
+    b11.classList.add("Buto")
+    b11.value="0"
+    }
+    b11.disabled="false"
+    b=!b
+    Proverka()
+}
+
+function OB12()
+{
+    if(b)
+    {
+    b12.classList.add("Butx")
+    b12.value="X"
+    }
+    else
+    {
+    b12.classList.add("Buto")
+    b12.value="0"
+    }
+    b12.disabled="false"
+    b=!b
+    Proverka()
+}
+
+
+function OB20()
+{
+    if(b)
+    {
+    b20.classList.add("Butx")
+    b20.value="X"
+    }
+    else
+    {
+    b20.classList.add("Buto")
+    b20.value="0"
+    }
+    b20.disabled="false"
+    b=!b
+    Proverka()
+}
+
+function OB21()
+{
+    if(b)
+    {
+        b221.classList.add("Butx")
+    b21.value="X"
+    }
+    else
+    {
+    b21.classList.add("Buto")
+    b21.value="0"
+    }
+    b21.disabled="false"
+    b=!b
+    Proverka()
+}
+
+function OB22()
+{
+    if(b)
+    {
+    b22.classList.add("Butx")
+    b22.value="X"
+    }
+    else
+    {
+    b22.classList.add("Buto")
+    b22.value="0"
+    }
+    b22.disabled="false"
+    b=!b
+    Proverka()
+}
+
+function Reset()
+{
+    location.reload()      
+}
+
+function Proverka()
+{
+if (b00.value=="X" && b01.value=="X" && b02.value=="X")
+{
+    ResBut.value="Победа X" 
+    b00.style="background-color:Red; color: White;"       
+    b01.style="background-color:Red; color: White;"       
+    b02.style="background-color:Red; color: White;"   
+    ResBut.style="background-color:Red; color: White;"     
+}
+if (b10.value=="X" && b11.value=="X" && b12.value=="X")
+{
+    ResBut.value="Победа X"    
+    b10.style="background-color:Red; color: White;"       
+    b11.style="background-color:Red; color: White;"       
+    b12.style="background-color:Red; color: White;" 
+    ResBut.style="background-color:Red; color: White;"              
+}
+if (b20.value=="X" && b21.value=="X" && b22.value=="X")
+{
+    ResBut.value="Победа X"
+    b20.style="background-color:Red; color: White;"       
+    b21.style="background-color:Red; color: White;"       
+    b22.style="background-color:Red; color: White;" 
+    ResBut.style="background-color:Red; color: White;"                    
+}
+
+
+if (b00.value=="X" && b10.value=="X" && b20.value=="X")
+{
+    ResBut.value="Победа X" 
+    b00.style="background-color:Red; color: White;"       
+    b10.style="background-color:Red; color: White;"       
+    b20.style="background-color:Red; color: White;" 
+    ResBut.style="background-color:Red; color: White;"                       
+}
+if (b01.value=="X" && b11.value=="X" && b21.value=="X")
+{
+    ResBut.value="Победа X"  
+    b01.style="background-color:Red; color: White;"       
+    b11.style="background-color:Red; color: White;"       
+    b21.style="background-color:Red; color: White;" 
+    ResBut.style="background-color:Red; color: White;"                    
+}
+if (b02.value=="X" && b12.value=="X" && b22.value=="X")
+{
+    ResBut.value="Победа X"  
+    b02.style="background-color:Red; color: White;"       
+    b12.style="background-color:Red; color: White;"       
+    b22.style="background-color:Red; color: White;"  
+    ResBut.style="background-color:Red; color: White;"                  
+}
+
+if (b00.value=="X" && b11.value=="X" && b22.value=="X")
+{
+  
+    ResBut.value="Победа X"  
+    b00.style="background-color:Red; color: White;"       
+    b11.style="background-color:Red; color: White;"       
+    b22.style="background-color:Red; color: White;" 
+    ResBut.style="background-color:Red; color: White;"                  
+}
+if (b02.value=="X" && b11.value=="X" && b20.value=="X")
+{
+    ResBut.value="Победа X"      
+    b02.style="background-color:Red; color: White;"       
+    b11.style="background-color:Red; color: White;"       
+    b20.style="background-color:Red; color: White;"  
+    ResBut.style="background-color:Red; color: White;"              
+}
+
+
+
+
+
+
+if (b00.value=="0" && b01.value=="0" && b02.value=="0")
+{
+    ResBut.value="Победа 0"  
+    b00.style="background-color:Green; color: White;"         
+    b01.style="background-color:Green; color: White;"         
+    b02.style="background-color:Green; color: White;"         
+    ResBut.style="background-color:Green; color: White;"         
+}
+if (b10.value=="0" && b11.value=="0" && b12.value=="0")
+{
+    ResBut.value="Победа 0" 
+    b10.style="background-color:Green; color: White;"         
+    b11.style="background-color:Green; color: White;"         
+    b12.style="background-color:Green; color: White;" 
+    ResBut.style="background-color:Green; color: White;"                          
+}
+if (b20.value=="0" && b21.value=="0" && b22.value=="0")
+{
+    ResBut.value="Победа 0"
+    b20.style="background-color:Green; color: White;"         
+    b21.style="background-color:Green; color: White;"         
+    b22.style="background-color:Green; color: White;"  
+    ResBut.style="background-color:Green; color: White;"                         
+}
+
+
+if (b00.value=="0" && b10.value=="0" && b20.value=="0")
+{
+    ResBut.value="Победа 0" 
+    b00.style="background-color:Green; color: White;"         
+    b10.style="background-color:Green; color: White;"         
+    b20.style="background-color:Green; color: White;" 
+    ResBut.style="background-color:Green; color: White;"                        
+}
+if (b01.value=="0" && b11.value=="0" && b21.value=="0")
+{
+    ResBut.value="Победа 0"  
+    b01.style="background-color:Green; color: White;"         
+    b11.style="background-color:Green; color: White;"         
+    b21.style="background-color:Green; color: White;" 
+    ResBut.style="background-color:Green; color: White;"                          
+}
+if (b02.value=="0" && b12.value=="0" && b22.value=="0")
+{
+    ResBut.value="Победа 0"    
+    b01.style="background-color:Green; color: White;"         
+    b11.style="background-color:Green; color: White;"         
+    b21.style="background-color:Green; color: White;"  
+    ResBut.style="background-color:Green; color: White;"                     
+}
+
+if (b00.value=="0" && b11.value=="0" && b22.value=="0")
+{
+    ResBut.value="Победа 0"   
+    b00.style="background-color:Green; color: White;"         
+    b11.style="background-color:Green; color: White;"         
+    b22.style="background-color:Green; color: White;" 
+    ResBut.style="background-color:Green; color: White;"                          
+}
+if (b02.value=="0" && b11.value=="0" && b20.value=="0")
+{
+    ResBut.value="Победа 0" 
+    b02.style="background-color:Green; color: White;"         
+    b11.style="background-color:Green; color: White;"         
+    b20.style="background-color:Green; color: White;"
+    ResBut.style="background-color:Green; color: White;"                         
+}
+
+
+
+}   
+</script>
